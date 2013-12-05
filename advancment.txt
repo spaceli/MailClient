@@ -1,0 +1,42 @@
+MailClient:
+测试发送简单邮件成功(SendMail.java)
+简单用户界面设计完成，包含初始界面(MailClient.java)和用户设置界面(Configuration.java)
+实现了用户设置内容在进程中的保存
+
+MailClient 1.1:
+进一步完善用户界面，设置了JTree的属性及响应
+设计新邮件对话框，可成功发送邮件
+
+MailClent 1.2:
+编写邮件处理类MailAction.java，实现其send(),save(),regain()三个静态方法
+废弃原SendMail.java类
+save,regain方法分别为将邮件存草稿（写入文件）和获取草稿箱列表（读入文件）
+
+MailClient 1.3:
+实现了类MailAction中的receive()方法，新建MailDecoder类用于解析下载的邮件报文，废弃原RecvMail.java类
+重新完善send(),save(),regain()三个静态方法，修改其参数及返回值
+实现了邮件的抄送和密送
+
+MailClient 1.4:
+Mail类中：修改time属性类型为long，修改其getTime方法，返回日期格式字符串
+                          重写其equals方法，用于判断两个Mail对象是否相等
+MailAction中：重新完善receive()方法，避免了邮件重新下载的问题
+			    重新完善regain()方法，使获得的List按时间顺序排列
+MailClient:实现了表格数据显示，表格单击响应，以及树与表格的对应关系
+
+MailClient 1.5:
+实现ReadMail对话框的显示及相关操作
+MailClient:实现了树的右键响应（提示清空邮箱）及其响应操作
+		   实现了各邮箱表格数据的双击响应与读写操作的连接
+修改WriteNewMail的构造方法，增加mail参数，用于转发邮件功能的实现
+完善MailDecoder类，使其可以对Base64编码进行解码
+
+MailClient 1.6: （重大突破）
+MailAction类中添加了save的重载方法，用于保存修改后的邮件链表
+增加了UserAction类，用于保存和获取user链表，从而实现了多用户切换
+修改了MailAction、Configuration和MailClient中各文件的路径，实现各用户数据分离
+修改了MailDecoder、MailEncoder的附件加工方法，实现了附件的发送和下载
+
+MailClient 1.7(End)
+调整一些布局，增加注释，删除冗余代码
+修改解码的一些小问题
